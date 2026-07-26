@@ -45,13 +45,3 @@ dependencyManagement {
 tasks.named('test') {
     useJUnitPlatform()
 }
-
-graalvmNative {
-    binaries {
-        main {
-            resources {
-                includedPatterns.add(".*data/.*\\.md")
-            }
-        }
-    }
-}

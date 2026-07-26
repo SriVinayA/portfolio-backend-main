@@ -7,12 +7,19 @@ import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportRuntimeHints;
 import org.springframework.core.io.Resource;
 import org.springframework.ai.chat.client.ChatClient;
+import reactor.core.scheduler.Schedulers;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import reactor.core.scheduler.Schedulers;
+import org.springframework.aot.hint.RuntimeHints;
+import org.springframework.aot.hint.RuntimeHintsRegistrar;
 
 @Configuration
+@ImportRuntimeHints(ChatConfiguration.MarkdownResourceHints.class)
 public class ChatConfiguration {
 
     @Value("classpath:data/SystemPrompt.md")
@@ -38,14 +45,24 @@ public class ChatConfiguration {
         String portfolio = new String(portfolioResource.getContentAsByteArray(), StandardCharsets.UTF_8);
         String faq = new String(faqResource.getContentAsByteArray(), StandardCharsets.UTF_8);
 
-        // Simple string replacement as specified in SystemPrompt.md
         String fullPrompt = systemPrompt
-            .replace("{resources/data/portfolio.md}", portfolio)
+                .replace("{resources/data/portfolio.md}", portfolio)
                 .replace("{resources/data/FaqAndGuardrails.md}", faq);
 
         return builder
                 .defaultSystem(fullPrompt)
-                .defaultAdvisors(MessageChatMemoryAdvisor.builder(chatMemory).build())
+                .defaultAdvisors(MessageChatMemoryAdvisor.builder(chatMemory)
+                        .scheduler(Schedulers.boundedElastic())
+                        .build())
                 .build();
     }
+
+    static class MarkdownResourceHints implements RuntimeHintsRegistrar {
+        @Override
+        public void registerHints(RuntimeHints hints, ClassLoader classLoader) {
+            // Registers all .md files inside the resources/data directory
+            hints.resources().registerPattern("data/*.md");
+        }
+    }
+
 }
