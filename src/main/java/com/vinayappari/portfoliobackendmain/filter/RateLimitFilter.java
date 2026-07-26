@@ -1,6 +1,6 @@
-package com.vinayappari.portfolio_backend.filter;
+package com.vinayappari.portfoliobackendmain.filter;
 
-import com.vinayappari.portfolio_backend.service.RateLimitingService;
+import com.vinayappari.portfoliobackendmain.service.RateLimitingService;
 import io.github.bucket4j.Bucket;
 import io.github.bucket4j.ConsumptionProbe;
 import jakarta.servlet.FilterChain;

@@ -1,7 +1,7 @@
-package com.vinayappari.portfolio_backend.controller;
+package com.vinayappari.portfoliobackendmain.controller;
 
-import com.vinayappari.portfolio_backend.dto.ChatRequest;
-import com.vinayappari.portfolio_backend.service.ChatService;
+import com.vinayappari.portfoliobackendmain.dto.ChatRequest;
+import com.vinayappari.portfoliobackendmain.service.ChatService;
 import jakarta.validation.Valid;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;

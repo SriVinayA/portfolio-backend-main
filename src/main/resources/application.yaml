@@ -1,17 +1,11 @@
-server:
-  port: ${PORT:8080}
-
 spring:
   application:
-    name: portfolio-backend
+    name: portfolio-backend-main
   ai:
-#    google:
-#      genai:
-#        api-key: ${GEMINI_API_KEY}
-#        chat:
-#          model: gemini-3.1-flash-lite
     deepseek:
       api-key: ${DEEPSEEK_API_KEY}
       chat:
         model: deepseek-v4-flash
         max-tokens: 600
+server:
+  port: 8080

@@ -1,9 +1,9 @@
-# Sri Vinay Appari
+# Vinay Appari
 ## Full Stack Java Developer
 
-- Phone: (669) 288-1604
-- Email: srivinay.appari@gmail.com
-- LinkedIn: https://www.linkedin.com/in/SriVinayA
+- Phone: (513) 409-4431
+- Email: sva.sjsu@gmail.com
+- LinkedIn: https://www.linkedin.com/in/vinay-sva
 - GitHub: https://github.com/SriVinayA
 - Portfolio: https://portfolio-sri-vinay-as-projects.vercel.app
 
@@ -21,11 +21,11 @@ Recent focus: Bridging traditional enterprise Java with modern AI/LLM capabiliti
 
 **Languages:** Java, Python, TypeScript, JavaScript, C++, SQL, PL/SQL
 
-**Backend:** Spring Boot, Spring Security, Spring AI, Hibernate, Spring Data JPA, FastAPI, Node.js, REST, GraphQL, JMS
+**Backend:** Spring Boot, Spring Security, Spring AI, Hibernate, FastAPI, Node.js, REST, GraphQL, JMS
 
 **Frontend:** React, Redux, Angular 2–9, TypeScript, HTML5, CSS3, Tailwind CSS, Bootstrap
 
-**Cloud & DevOps:** AWS (ECS, EC2, S3, Lambda, RDS, API Gateway, CloudWatch), Docker, Kubernetes, Jenkins, Git, Maven, Gradle
+**Cloud & DevOps:** AWS (EC2, S3, Lambda, RDS, API Gateway, CloudWatch), Docker, Kubernetes, Jenkins, Git, Maven, Gradle
 
 **Data & Streaming:** PostgreSQL, Oracle, MySQL, MongoDB, Cassandra, Apache Kafka, HBase
 
@@ -37,23 +37,16 @@ Recent focus: Bridging traditional enterprise Java with modern AI/LLM capabiliti
 
 ## Professional Experience
 
-### State Compensation Insurance Fund (SCIF) — Java Developer
-Pleasanton, CA | March 2025 – Present
+### Qualcomm — Full Stack Java Developer
+San Diego, CA | Sep 2024 – Present
 
-- **Project:** Claims Administration Modernization
-- Designed and developed a scalable claims processing system utilizing a microservices architecture. Enabled end-to-end claim lifecycle management from submission to status tracking prioritizing clean architecture, maintainability, and secure workflows.
-- Engineered scalable backend microservices using Java and Spring Boot to support end-to-end claim lifecycle workflows, enabling seamless validation and status tracking.
-- Designed and implemented robust RESTful APIs with strict request/response modeling and centralized error handling to ensure reliable client-server interactions.
-- Modeled complex data persistence layers utilizing Spring Data JPA and PostgreSQL, effectively mapping relational database structures for claims processing and user management.
-- Optimized database access and overall query execution times by refining repository layers and implementing highly effective indexing strategies.
-- Architected an event-driven messaging layer utilizing Apache Kafka, configuring topics, producers, and consumer groups to enable asynchronous, real-time claim status routing across distributed microservices.
-- Streamlined system architecture by designing independent, loosely coupled microservices to manage real-time claim status updates across distributed environments.
-- Secured protected enterprise resources by configuring robust JWT-based authentication and implementing strict role-based access control (RBAC) across all API endpoints.
-- Developed a dynamic and responsive internal dashboard for claims adjusters using React, integrating it securely with backend REST APIs to facilitate real-time monitoring.
-- Orchestrated the deployment of containerized microservices utilizing AWS ECS and Docker, guaranteeing high availability and automated scaling to handle fluctuating claims loads.
-- Implemented serverless data processing workflows utilizing AWS Lambda to manage the automated parsing of uploaded claim documents alongside Kafka event streams.
-- Validated core business logic and endpoint reliability by writing comprehensive tests.
-- **Environment:** Java, Spring Boot, RESTful APIs, Spring Data JPA, PostgreSQL, Apache Kafka, JWT, RBAC, React, AWS ECS, Docker, AWS Lambda
+- Architected microservices using Spring Boot and deployed on AWS EC2 with Docker containers, supporting high-throughput internal tools
+- Built responsive UIs with Angular 9 and React (Redux + React Router), reducing page load times through lazy loading and code splitting
+- Implemented OAuth2/Spring Security for enterprise authentication across multiple services
+- Designed GraphQL APIs using Relay framework to unify data fetching for frontend teams
+- Configured Kafka for real-time event streaming between distributed services and HBase for data processing pipelines
+- Established Jenkins CI/CD pipelines for automated testing and deployment of microservices to Pivotal Cloud Foundry
+- **Environment:** Java 8/11, Spring Boot, Angular, React, MongoDB, MySQL, AWS, Docker, Kubernetes, Kafka, Jenkins
 
 ---
 

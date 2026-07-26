@@ -1,4 +1,4 @@
-package com.vinayappari.portfolio_backend.config;
+package com.vinayappari.portfoliobackendmain.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

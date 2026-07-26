@@ -1,4 +1,4 @@
-package com.vinayappari.portfolio_backend.service;
+package com.vinayappari.portfoliobackendmain.service;
 
 import io.github.bucket4j.Bandwidth;
 import io.github.bucket4j.Bucket;

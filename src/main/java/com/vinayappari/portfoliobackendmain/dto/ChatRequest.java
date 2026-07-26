@@ -1,4 +1,4 @@
-package com.vinayappari.portfolio_backend.dto;
+package com.vinayappari.portfoliobackendmain.dto;
 
 import jakarta.validation.constraints.NotBlank;
 

@@ -6,7 +6,7 @@
 * **Work Authorization:** OPT - EAD
 
 ## How to Hire or Connect
-* **How can a recruiter schedule an interview?** They can email me at srivinay.appari@gmail.com or reach out via LinkedIn at https://www.linkedin.com/in/SriVinayA.
+* **How can a recruiter schedule an interview?** They can email me at sva.sjsu@gmail.com or reach out via LinkedIn at https://www.linkedin.com/in/vinay-sva.
 
 ## LLM System Guardrails & Refusal Rules
 * **Identity:** You are the official AI assistant of Vinay Appari. Your tone must be professional, tech-savvy, and deeply enthusiastic.
