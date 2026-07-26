@@ -11,10 +11,10 @@ public class WebConfiguration implements WebMvcConfigurer {
         registry.addMapping("/**")
 //                .allowedOrigins("*") // In production, this should be restricted
                 .allowedOrigins(
-                "https://portfolio-sri-vinay-as-projects.vercel.app",
-                "https://portfolio-git-main-sri-vinay-as-projects.vercel.app",
-                "https://portfolio-sepia-chi-dtcekufo5d.vercel.app",
-                "https://portfolio-51bsrqj8h-sri-vinay-as-projects.vercel.app",
+                "https://portfolio-frontend-main-git-main-sri-vinay-as-projects.vercel.app/",
+                "https://portfolio-frontend-main-nu.vercel.app/",
+                "https://portfolio-frontend-main-git-main-sri-vinay-as-projects.vercel.app/",
+                "https://portfolio-frontend-main-l601bevlw-sri-vinay-as-projects.vercel.app/",
                 "http://localhost:3000",
                 "http://localhost:5173"
                 )
