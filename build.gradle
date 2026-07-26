@@ -45,3 +45,8 @@ dependencyManagement {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+bootBuildImage {
+    imageName = "${project.findProperty('imageName')}"
+    imagePlatform = "linux/amd64"
+}
