@@ -1,4 +1,4 @@
-package com.vinayappari.portfoliobackendmain.service;
+package com.vinayappari.portfolio_backend.service;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.memory.ChatMemory;
@@ -20,8 +20,12 @@ public class ChatService {
                 ? conversationId
                 : "default-session";
 
+        // Safety-net enforcement: reinforce English-only output on every turn,
+        // in case memory dilutes the original system prompt instruction.
+        String enforcedMessage = message + "\n\n[SYSTEM NOTE: Respond only in English, regardless of the language of this message.]";
+
         return this.chatClient.prompt()
-                .user(message)
+                .user(enforcedMessage)
                 // Use the updated constant from the ChatMemory interface
                 .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, chatId))
                 .stream()
