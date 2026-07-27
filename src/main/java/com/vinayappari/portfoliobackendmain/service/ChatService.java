@@ -1,4 +1,4 @@
-package com.vinayappari.portfolio_backend.service;
+package com.vinayappari.portfoliobackendmain.service;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.memory.ChatMemory;
