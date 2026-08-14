@@ -22,7 +22,8 @@ public class ChatService {
                 ? conversationId
                 : "default-session";
 
-        log.info("Incoming chat message | conversationId={} | message={}", chatId, message);
+//        log.info("Incoming chat message | conversationId={} | message={}", chatId, message);
+        log.info("{}", message);
 
         String enforcedMessage = message + "\n\n[SYSTEM NOTE: Respond only in English, regardless of the language of this message.]";
 

@@ -1,36 +1,60 @@
-#!/bin/bash
-set -e
+#!/usr/bin/env bash
+set -euo pipefail
 
 PROJECT_ID="arctic-odyssey-503605-k0"
 REGION="us-central1"
-ARTIFACT_REPO="portfolio-backend-main-artifacts"
-IMAGE_NAME="portfolio-backend-main-image"
-SERVICE_NAME="portfolio-backend-main-service"
+REPOSITORY="portfolio-backend-main-artifacts"
+SERVICE="portfolio-backend-main-service"
+IMAGE_NAME="portfolio-backend-main"
+TAG="native-amd64"
 
-VERSION=$(git rev-parse --short HEAD)
-FULL_IMAGE_PATH="${REGION}-docker.pkg.dev/${PROJECT_ID}/${ARTIFACT_REPO}/${IMAGE_NAME}:${VERSION}"
+LOCAL_IMAGE="${IMAGE_NAME}:${TAG}"
+REMOTE_IMAGE="${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY}/${IMAGE_NAME}:${TAG}"
 
-echo "🚀 Starting deployment for commit '${VERSION}'..."
-echo "📦 Image destination: ${FULL_IMAGE_PATH}"
+echo "==> Selecting Google Cloud project"
+gcloud config set project "${PROJECT_ID}"
 
-echo "🔑 Configuring Docker authentication..."
-gcloud auth configure-docker ${REGION}-docker.pkg.dev --quiet
+echo "==> Verifying Artifact Registry Container authentication"
+gcloud auth print-access-token | \
+  container registry login us-central1-docker.pkg.dev \
+    --username=oauth2accesstoken \
+    --password-stdin
 
-echo "🛠️ Compiling GraalVM native image (linux/amd64) locally using Gradle + QEMU emulation..."
-./gradlew bootBuildImage \
-  --imageName=${FULL_IMAGE_PATH} \
-  --imagePlatform=linux/amd64 \
-  --cleanCache
+echo "==> Building linux/amd64 native image"
+container build \
+  --arch amd64 \
+  --cpus 8 \
+  --memory 16g \
+  -t "${LOCAL_IMAGE}" \
+  .
 
-echo "☁️ Pushing image to Google Artifact Registry..."
-docker push ${FULL_IMAGE_PATH}
+echo "==> Tagging image"
+container image tag "${LOCAL_IMAGE}" "${REMOTE_IMAGE}"
 
-echo "🚀 Deploying to Cloud Run..."
-gcloud run deploy ${SERVICE_NAME} \
-  --image=${FULL_IMAGE_PATH} \
-  --region=${REGION} \
-  --project=${PROJECT_ID} \
+echo "==> Pushing image"
+container image push "${REMOTE_IMAGE}"
+
+echo "==> Deploying to Cloud Run"
+gcloud run deploy "${SERVICE}" \
+  --image="${REMOTE_IMAGE}" \
+  --region="${REGION}" \
+  --platform=managed \
   --allow-unauthenticated \
-  --execution-environment=gen2
+  --port=8080
 
-echo "✅ Successfully deployed revision for Git commit ${VERSION}!"
+SERVICE_URL="$(gcloud run services describe "${SERVICE}" \
+  --region="${REGION}" \
+  --format='value(status.url)')"
+
+echo
+echo "Deployment completed."
+echo "Service URL: ${SERVICE_URL}"
+echo "Health URL: ${SERVICE_URL}/actuator/health"
+
+echo
+echo "==> Removing local images"
+
+container image rm "${LOCAL_IMAGE}" || true
+container image rm "${REMOTE_IMAGE}" || true
+
+echo "==> Local image cleanup complete"

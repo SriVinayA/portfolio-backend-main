@@ -6,6 +6,6 @@ spring:
       api-key: ${DEEPSEEK_API_KEY}
       chat:
         model: deepseek-v4-flash
-        max-tokens: 600
+        max-tokens: 350
 server:
-  port: 8080
+  port: ${PORT:8080}
